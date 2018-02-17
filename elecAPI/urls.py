@@ -18,11 +18,9 @@ from django.contrib import admin
 from myapp import views as v
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^neferaReadings/speed=(?P<speed>[0-9]+)/avgSpeed=(?P<avgSpeed>[0-9]+)/distance=(?P<distance>[0-9]+)/throttlePosition=(?P<throttlePosition>[0-9]+)/$', v.showData.as_view()),
-    url(r'^data/', v.dataView.as_view()),
-    
-   
-
+    url(r'^neferaReadings/speed=(?P<speed>[0-9]+)/avgSpeed=(?P<avgSpeed>[0-9]+)/distance=(?P<distance>[0-9]+)/throttlePosition=(?P<throttlePosition>[0-9]+)/$', v.MicroControllerComm.as_view()),
+    url(r'^lastNeferaReadings/$', v.clientComm.as_view()),
+    #url(r'^data/', v.dataView.as_view()),
 ]
 
 

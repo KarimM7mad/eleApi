@@ -8,4 +8,5 @@ class data(models.Model):
     throttlePosition = models.IntegerField()
 
     def __str__(self):
-        return "data"
+        return "{\"speed\":"+ str(self.speed)+",\"avgSpeed\":"+str(self.avgSpeed)+",\"distance\":"+str(self.distance)+",\"throttlePosition\":"+str(self.throttlePosition)+"}"
+                
