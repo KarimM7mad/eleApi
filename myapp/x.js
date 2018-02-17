@@ -21,44 +21,44 @@ window.onload = function() {
 	function init() {
 		//Clear the canvas everytime a chart is drawn
 		ctx.clearRect(0, 0, W, H);
-    //Lets add the text
-    ctx.fillStyle = color;
-    ctx.font = "30px bebas";
-    if (speed >= 0 && speed <= 180) {
-      text = speed + "km/hr";
-      if (speed > 120 && speed < 170) {
-        color = "green";
-      } else if (speed > 170) {
-        color = "yellow";
-      }
-    } else if (speed > 180) {
-      text = "MAX km/hr";
-      color = "red";
-    } else {
-      text = "0 km/hr";
-    }
-    //Lets center the text
-    //deducting half of text width from position x
-    text2 = "\nAverage Speed = "+avgSpeed+" km/hr";
-    text3 = "\nDistance = "+distancee+" km";
-    text4 = "\nthrottlePosition = "+throttlePosition+" n";
+		//Lets add the text
+		ctx.fillStyle = color;
+		ctx.font = "30px bebas";
+		if (speed >= 0 && speed <= 180) {
+			text = speed + "km/hr";
+			if (speed > 120 && speed < 170) {
+				color = "green";
+			} else if (speed > 170) {
+				color = "yellow";
+			}
+		} else if (speed > 180) {
+			text = "MAX km/hr";
+			color = "red";
+		} else {
+			text = "0 km/hr";
+		}
+		//Lets center the text
+		//deducting half of text width from position x
+		text2 = "\nAverage Speed = " + avgSpeed + " km/hr";
+		text3 = "\nDistance = " + distancee + " km";
+		text4 = "\nthrottlePosition = " + throttlePosition + " n";
 
-    text_width = ctx.measureText(text).width;
-    text_width2 = ctx.measureText(text2).width;
-    text_width3 = ctx.measureText(text3).width;
-    text_width4 = ctx.measureText(text4).width;
-
-
-    //adding manual value to position y since the height of the text cannot
-    //be measured easily. There are hacks but we will keep it manual for now.
-    ctx.fillText(text, W / 2 - text_width / 2, H / 2 + 50);
-    ctx.fillText(text2, W / 2 - text_width2 / 2, H / 2 + 120);
-    ctx.fillText(text3, W / 2 - text_width3 / 2, H / 2 + 190);
-    ctx.fillText(text4, W / 2 - text_width4 / 2, H / 2 + 260);
+		text_width = ctx.measureText(text).width;
+		text_width2 = ctx.measureText(text2).width;
+		text_width3 = ctx.measureText(text3).width;
+		text_width4 = ctx.measureText(text4).width;
 
 
-    //Background 360 degree arc
-    ctx.beginPath();
+		//adding manual value to position y since the height of the text cannot
+		//be measured easily. There are hacks but we will keep it manual for now.
+		ctx.fillText(text, W / 2 - text_width / 2, H / 2 + 50);
+		ctx.fillText(text2, W / 2 - text_width2 / 2, H / 2 + 120);
+		ctx.fillText(text3, W / 2 - text_width3 / 2, H / 2 + 190);
+		ctx.fillText(text4, W / 2 - text_width4 / 2, H / 2 + 260);
+
+
+		//Background 360 degree arc
+		ctx.beginPath();
 		ctx.strokeStyle = bgcolor;
 		ctx.lineWidth = 30;
 		ctx.arc(W / 2, H / 2, 200, Math.PI, 2 * Math.PI, false); //you can see the arc now
@@ -75,7 +75,7 @@ window.onload = function() {
 		//you can see the arc now
 		ctx.stroke();
 
-  }
+	}
 
 	function draw() {
 		//Cancel any movement animation if a new chart is requested
@@ -87,10 +87,10 @@ window.onload = function() {
 		xmlhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				tmpObj = JSON.parse(this.responseText);
-        new_speed = tmpObj.speed;
+				new_speed = tmpObj.speed;
 				avgSpeed = tmpObj.avgSpeed;
-        distancee = tmpObj.distance;
-        throttlePosition = tmpObj.throttlePosition;
+				distancee = tmpObj.distance;
+				throttlePosition = tmpObj.throttlePosition;
 			}
 		};
 		//place API Link here
